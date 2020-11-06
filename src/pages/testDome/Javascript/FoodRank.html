@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="rootDiv"></div>
+    <script>
+      function setup() {
+        // Write your code here
+        const upBtns = document.querySelectorAll('button:first-child')
+        const downBtns = document.querySelectorAll('button:last-child')
+        upBtns.forEach(b => {
+            b.onclick=function(e) {
+                let curLi = e.target.parentNode
+                let parent = curLi.parentNode
+                if(parent.firstElementChild === curLi) {
+                    return 
+                } else {
+                    let prevSibling = curLi.previousElementSibling
+                    parent.insertBefore(curLi, prevSibling)
+                }
+            }
+        })
+        downBtns.forEach(b => {
+            b.onclick = function(e) {
+                let curLi = e.target.parentNode
+                let parent = curLi.parentNode
+                if(parent.lastElementChild === curLi) {
+                    return 
+                } else {
+                    let next = curLi.nextElementSibling
+                    parent.insertBefore(next, curLi)
+                }
+            }
+        })
+      }
+
+      // Example case
+      rootDiv.innerHTML = `<ol>
+  <li><button>Up!</button>Taco<button>Down!</button></li>
+  <li><button>Up!</button>Pizza<button>Down!</button></li>
+  <li><button>Up!</button>Eggs<button>Down!</button></li>
+</ol>`;
+
+      setup();
+      document.getElementsByTagName("button")[2].click();
+
+      console.log(document.body.innerHTML);
+    </script>
+  </body>
+</html>

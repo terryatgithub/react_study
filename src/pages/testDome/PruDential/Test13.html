@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="rootDiv"></div>
+    <script>
+      function setup() {
+        // Write your code here.
+        btn.onclick = function () {
+          btn.style.display = "none";
+          setTimeout(() => {
+            btn.style.display = "block";
+          }, 1000);
+        };
+      }
+
+      // Example case.
+      rootDiv.innerHTML = `<button type="button" id="btn">Hide Me!</button>`;
+
+      setup();
+
+      var button = document.getElementById("btn");
+      button.click();
+      console.log(button.style.display != "none");
+    </script>
+  </body>
+</html>

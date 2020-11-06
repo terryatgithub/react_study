@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="rootdiv"></div>
+    <script>
+      function showCustomers(customers, targetList) {
+        // Your code goes here
+        customers.forEach((item) => {
+          let li = document.createElement("li");
+          let p = document.createElement("p");
+          let textnode = document.createTextNode(`${item.name}`);
+          p.onclick = function () {
+            if (li.childNodes.length === 2) {
+              li.removeChild(li.lastChild);
+            } else {
+              let p = document.createElement("p");
+              let textnode = document.createTextNode(`${item.email}`);
+              p.appendChild(textnode);
+              li.appendChild(p);
+            }
+          };
+          p.appendChild(textnode);
+          li.appendChild(p);
+          targetList.appendChild(li);
+        });
+      }
+
+      rootdiv.innerHTML = `
+<div>
+  <ul id="customers">
+  </ul>
+</div>
+`;
+      let customers = [
+        { name: "John", email: "john@example.com" },
+        { name: "Mary", email: "mary@example.com" },
+      ];
+      showCustomers(customers, document.getElementById("customers"));
+
+      let customerParagraph = document.querySelectorAll("li > p")[0];
+      if (customerParagraph) {
+        customerParagraph.click();
+      }
+      console.log(document.body.innerHTML);
+    </script>
+  </body>
+</html>

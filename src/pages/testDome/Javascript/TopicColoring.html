@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="rootDiv"></div>
+    <script>
+      function newMessage(topicName) {
+        // Write your code here
+        document.querySelectorAll('p').forEach(p => p.removeAttribute('style'))
+        let p = document.querySelector(`p[data-topic-name=${topicName}]`);
+        if (p !== null) {
+            p.style.backgroundColor = "red";
+        }
+      }
+
+      // Example case
+      rootDiv.innerHTML = `<div>
+    <p data-topic-name="discussion">General discussion</p>
+    <p data-topic-name="bugs">Bugs</p>
+    <p data-topic-name="animals">Animals</p>
+  </div>`;
+      newMessage("discussion");
+      newMessage("bugs");
+      newMessage("animals");
+      newMessage("discussion111");
+      console.log(document.body.innerHTML);
+    </script>
+  </body>
+</html>

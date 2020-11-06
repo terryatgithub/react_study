@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="rootDiv"></div>
+    <script>
+      function closestRelative(parent, relativeName) {
+        // Your code goes here
+        const descendant = [parent];
+        // debugger
+        let index = 0;
+        while (descendant.length) {
+          let childNodes = descendant.shift().childNodes;
+          index = 0;
+          while (index < childNodes.length) {
+            if (childNodes[index].tagName.toLowerCase() === relativeName.toLowerCase()) {
+              console.log('matched: ', childNodes);
+              return childNodes[index];
+            } else {
+              descendant.push(childNodes[index])
+            }
+            index++
+          }
+        }
+        console.log('no matching');
+        return null
+        //
+      }
+
+      // Example case
+      rootDiv.innerHTML =
+        "<James>" +
+        "<Dave></Dave>" +
+        "<Mike></Mike>" +
+        "<Sarah></Sarah>" +
+        "</James>";
+
+      let parent = document.getElementsByTagName("James")[0];
+      let relative = closestRelative(parent, "Mike");
+       relative = closestRelative(parent, "Mike1");
+       relative = closestRelative(parent, "Sarah");
+      console.log(relative && relative.tagName); // prints MIKE
+    </script>
+  </body>
+</html>

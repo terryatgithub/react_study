@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="rootDiv"></div>
+    <script>
+      function modifyTableCell(rowIndex, columnIndex, newText) {
+        // Write your code here.
+        let row = table.querySelector(`tr:nth-child(${rowIndex + 1})`);
+        let target = row.querySelector(`td:nth-child(${columnIndex + 1})`);
+        let ret = target.innerHTML;
+        target.innerHTML = newText;
+        return ret;
+      }
+
+      document.body.innerHTML = `
+  <table id = "table">
+      <tbody>
+          <tr>
+              <td>Isla</td>
+              <td>Leo</td>
+              <td>Samuel</td>
+          </tr>
+          <tr>
+              <td>Mia</td>
+              <td>Evie</td>
+              <td>Freya</td>
+          </tr>
+          <tr>
+              <td>Olivia</td>
+              <td>Ava</td>
+              <td>George</td>
+          </tr>
+      </tbody>
+  </table>`;
+
+      console.log(modifyTableCell(0, 1, "Joe"));
+    </script>
+  </body>
+</html>
